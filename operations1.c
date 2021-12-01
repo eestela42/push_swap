@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations1.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/29 17:20:19 by eestela           #+#    #+#             */
+/*   Updated: 2021/11/29 17:45:51 by eestela          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void		sa(t_tabs *tab)
+void	sa(t_tabs *tab)
 {
-	printf("sa\n");
 	t_tab	*second;
 	t_tab	*first;
 
@@ -13,11 +24,11 @@ void		sa(t_tabs *tab)
 	first->prev = second;
 	second->prev = NULL;
 	tab->A = second;
+	printf("sa\n");
 }
 
-void		sb(t_tabs *tab)
+void	sb(t_tabs *tab)
 {
-	printf("sb\n");
 	t_tab	*second;
 	t_tab	*first;
 
@@ -28,17 +39,17 @@ void		sb(t_tabs *tab)
 	first->prev = second;
 	second->prev = NULL;
 	tab->B = second;
+	printf("sb\n");
 }
 
-void		ss(t_tabs *tab)
+void	ss(t_tabs *tab)
 {
 	sa(tab);
 	sa(tab);
 }
 
-void		pa(t_tabs *tab)
+void	pa(t_tabs *tab)
 {
-	printf("pa\n");
 	t_tab	*A;
 	t_tab	*B;
 	t_tab	*mem;
@@ -53,11 +64,11 @@ void		pa(t_tabs *tab)
 	if (mem)
 		mem->prev = NULL;
 	tab->B = mem;
+	printf("pa\n");
 }
 
-void		pb(t_tabs *tab)
+void	pb(t_tabs *tab)
 {
-	printf("pb\n");
 	t_tab	*B;
 	t_tab	*A;
 	t_tab	*mem;
@@ -72,4 +83,5 @@ void		pb(t_tabs *tab)
 	if (mem)
 		mem->prev = NULL;
 	tab->A = mem;
+	printf("pb\n");
 }

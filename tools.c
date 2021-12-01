@@ -1,13 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tools.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/29 17:20:52 by eestela           #+#    #+#             */
+/*   Updated: 2021/11/29 17:32:22 by eestela          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void		afficher(t_tabs *tab)
+void	afficher(t_tabs *tab)
 {
 	t_tab	*tmp;
 	t_tab	*tmp1;
+
 	tmp = tab->A;
 	tmp1 = tab->B;
 	printf("\nA:     B:\n");
-	while(tmp || tmp1)
+	while (tmp || tmp1)
 	{
 		if (tmp)
 		{
@@ -27,7 +40,7 @@ void		afficher(t_tabs *tab)
 	printf("\n\n");
 }
 
-int		ft_free_tab(t_tabs **add_tab)
+int	ft_free_tab(t_tabs **add_tab)
 {
 	t_tabs	*tab;
 
@@ -47,40 +60,40 @@ int		ft_free_tab(t_tabs **add_tab)
 		free(tab);
 	tab = NULL;
 	*add_tab = tab;
-	return(0);
+	return (0);
 }
 
-int			size_list(t_tab *A)
+int	size_list(t_tab *A)
 {
 	int		i;
 
 	i = 0;
-	while(A)
+	while (A)
 	{
 		i++;
 		A = A->next;
 	}
-	return(i);
+	return (i);
 }
 
-int			is_sorted(t_tab *A)
+int	is_sorted(t_tab *A)
 {
 	t_tab	*tmp;
 	t_tab	*mem;
 
 	tmp = A->next;
-	while(tmp && A->i < tmp->i)
+	while (tmp && A->i < tmp->i)
 	{
 		mem = tmp->next;
 		A = tmp;
 		tmp = mem;
 	}
 	if (tmp)
-		return(0);
+		return (0);
 	return (1);
 }
 
-int			next_num(t_tab *A, t_tab *B)
+int	next_num(t_tab *A, t_tab *B)
 {
 	int		num;
 	int		next;
@@ -100,18 +113,17 @@ int			next_num(t_tab *A, t_tab *B)
 		A = A->next;
 	}
 	if (next == size)
-		return(min);
-	return(next);
+		return (min);
+	return (next);
 }
 
-void		insert(t_tabs *tab)
+void	insert(t_tabs *tab)
 {
 	t_tab	*A;
 	t_tab	*B;
 	int		next;
 	int		far;
 	void	(*action)(t_tabs *tab);
-
 
 	A = tab->A;
 	B = tab->B;

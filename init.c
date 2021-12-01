@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/29 17:20:58 by eestela           #+#    #+#             */
+/*   Updated: 2021/11/29 18:14:54 by eestela          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	ft_atoi(const char *str)
@@ -29,14 +41,20 @@ int	ft_atoi(const char *str)
 
 int			check_is_num(char *str)
 {
-	if (!ft_atoi(str) && ((str[0] != '0' && !str[1]) ||
-	(str[0] != '-' && str[1] != '0' && !str[2])))
-		return(0);
-	
-	return(1);
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		i++;
+	}
+	if ((!ft_atoi(str) && ((str[0] != '0' && !str[1]))) ||
+	(str[0] != '-' && str[1] != '0' && !str[2]) || i > 10)
+		return (0);
+	return (1);
 }
 
-int			ft_order(t_tabs *tab, int size)
+int	ft_order(t_tabs *tab, int size)
 {
 	int		order[size];
 	int		i;
@@ -46,14 +64,14 @@ int			ft_order(t_tabs *tab, int size)
 
 	i = 0;
 	tmp = tab->A;
-	while(i < size)
+	while (i < size)
 	{
 		place = 1;
 		tmpo = tab->A;
 		while (tmpo)
 		{
 			if (tmp->i == tmpo->i && tmp != tmpo)
-				return(0);
+				return (0);
 			else if (tmp->i > tmpo->i)
 				place++;
 			tmpo = tmpo->next;
@@ -68,10 +86,10 @@ int			ft_order(t_tabs *tab, int size)
 		tmp->i = order[i++];
 		tmp = tmp->next;
 	}
-	return(1);
+	return (1);
 }
 
-t_tabs		*ft_init(t_tabs *tab, int ac, char *av[])
+t_tabs	*ft_init(t_tabs *tab, int ac, char *av[])
 {
 	int		i;
 	t_tab	*tmp;
@@ -83,9 +101,8 @@ t_tabs		*ft_init(t_tabs *tab, int ac, char *av[])
 		tab->A->i = ft_atoi(av[1]);
 	else
 	{
-		
 		ft_free_tab(&tab);
-		return(NULL);
+		return (NULL);
 	}
 	i = 2;
 	mem = tab->A;
@@ -94,8 +111,8 @@ t_tabs		*ft_init(t_tabs *tab, int ac, char *av[])
 		tmp = malloc(sizeof(t_tab));
 		if (!tmp)
 		{
-				ft_free_tab(&tab);
-				return(NULL);
+			ft_free_tab(&tab);
+			return (NULL);
 		}
 		mem->next = tmp;
 		tmp->prev = mem;
@@ -107,5 +124,5 @@ t_tabs		*ft_init(t_tabs *tab, int ac, char *av[])
 	tab->B = NULL;
 	if ((tab && !ft_order(tab, size_list(tab->A))) || i < ac)
 		ft_free_tab(&tab);
-	return(tab);
+	return (tab);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/29 17:40:25 by eestela           #+#    #+#             */
+/*   Updated: 2021/11/29 17:41:02 by eestela          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -7,14 +19,14 @@
 # include <stdio.h>
 # include <fcntl.h>
 
-typedef struct	s_tab
+typedef struct s_tab
 {
 	int					i;
 	struct s_tab		*next;
 	struct s_tab		*prev;
 }						t_tab;
 
-typedef struct	s_tabs
+typedef struct s_tabs
 {
 	t_tab				*A;
 	t_tab				*B;
@@ -45,6 +57,6 @@ t_tabs		*ft_init(t_tabs *tab, int ac, char *av[]);
 void		sort_two(t_tabs *tab);
 void		sort_three(t_tabs *tab);
 void		sort_five(t_tabs *tab);
-void		sort_hund(int	stack, t_tabs *tab);
+void		sort_hund(int stack, t_tabs *tab);
 
 #endif

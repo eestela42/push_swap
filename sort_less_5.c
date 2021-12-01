@@ -1,30 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_less_5.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/29 17:20:47 by eestela           #+#    #+#             */
+/*   Updated: 2021/11/29 17:37:27 by eestela          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	sort_two(t_tabs *tab)
 {
-	t_tab *tmp;
+	t_tab	*tmp;
 
 	tmp = tab->A->next;
 	if (tab->A->i > tmp->i)
 		sa(tab);
 }
 
-int		place(int A, int B, int C)
+int	place(int A, int B, int C)
 {
 	int	i;
 
 	i = 1;
 	if (A > B)
 		i++;
-	if (A> C)
+	if (A > C)
 		i++;
-	return(i);
-	 
+	return (i);
 }
+
 void	sort_three(t_tabs *tab)
 {
-	t_tab *C;
-	t_tab *B;
+	t_tab	*C;
+	t_tab	*B;
 
 	B = tab->A->next;
 	C = B->next;

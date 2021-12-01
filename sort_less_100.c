@@ -1,24 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_less_100.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/29 17:20:50 by eestela           #+#    #+#             */
+/*   Updated: 2021/11/29 17:39:25 by eestela          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int		sending_top(t_tabs *tab, int mv, int s_size, int s_comp)
+int	sending_top(t_tabs *tab, int mv, int s_size, int s_comp)
 {
 	void	(*action)(t_tab **add);
 	int		i;
 
 	i = 0;
-	
 	while (mv--)
-	{tab->i++;
+	{
+		tab->i++;
 		ra(tab);
 	}
 	tab->i++;
 	pb(tab);
 	if (s_size * s_comp <= size_list(tab->B))
-		return(s_comp + 1);
-	return(s_comp);
+		return (s_comp + 1);
+	return (s_comp);
 }
 
-int		sending_bot(t_tabs *tab, int mv, int s_size, int s_comp)
+int	sending_bot(t_tabs *tab, int mv, int s_size, int s_comp)
 {
 	void	(*action)(t_tab **add);
 	int		i;
@@ -32,31 +44,31 @@ int		sending_bot(t_tabs *tab, int mv, int s_size, int s_comp)
 	pb(tab);
 	tab->i++;
 	if (s_size * s_comp <= size_list(tab->B))
-		return(s_comp + 1);
-	return(s_comp);
+		return (s_comp + 1);
+	return (s_comp);
 }
 
-int		send_to_B(t_tabs *tab, int s_size, int s_comp, int size)
+int	send_to_B(t_tabs *tab, int s_size, int s_comp, int size)
 {
 	t_tab	*last_A;
 	t_tab	*tmp;
 	t_tab	*tmp1;
 	int		mv1;
 	int		mv2;
-	
+
 	while (tab->A)
 	{
 		last_A = tab->A;
-		while(last_A->next)
+		while (last_A->next)
 			last_A = last_A->next;
 		mv1 = 0;
 		tmp = tab->A;
-		while(++mv1 && tmp->next && (tmp->i >s_comp * s_size))
+		while (++mv1 && tmp->next && (tmp->i > s_comp * s_size))
 			tmp = tmp->next;
 		--mv1;
 		mv2 = 0;
 		tmp1 = last_A;
-		while(++mv2 && tmp1->prev && (tmp1->i >s_comp * s_size))
+		while (++mv2 && tmp1->prev && (tmp1->i > s_comp * s_size))
 			tmp1 = tmp1->prev;
 		--mv2;
 		if (mv1 < mv2 + 1 || (mv1 == mv2 + 1 && tmp->i < tmp1->i))
@@ -66,14 +78,14 @@ int		send_to_B(t_tabs *tab, int s_size, int s_comp, int size)
 		if (tab->B->next && tab->B->i < tab->B->next->i)
 			sb(tab);
 	}	
-	return(0);
+	return (0);
 }
 
 void	send_to_A(t_tabs *tab, int size)
 {
-	int	i;
-	int	mv;
-	int size_l;
+	int		i;
+	int		mv;
+	int		size_l;
 	void	(*action)(t_tabs *tab);
 	t_tab	*tmp;
 
@@ -100,10 +112,9 @@ void	send_to_A(t_tabs *tab, int size)
 		pa(tab);
 		i++;
 	}
-	
 }
 
-void	sort_hund(int	stack, t_tabs *tab)
+void	sort_hund(int stack, t_tabs *tab)
 {
 	int	s_size;
 	int	size;
