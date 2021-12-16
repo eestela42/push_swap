@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:20:50 by eestela           #+#    #+#             */
-/*   Updated: 2021/11/29 17:39:25 by eestela          ###   ########.fr       */
+/*   Updated: 2021/12/16 18:43:52 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 int	sending_top(t_tabs *tab, int mv, int s_size, int s_comp)
 {
-	void	(*action)(t_tab **add);
-	int		i;
-
-	i = 0;
 	while (mv--)
 	{
 		tab->i++;
@@ -25,17 +21,13 @@ int	sending_top(t_tabs *tab, int mv, int s_size, int s_comp)
 	}
 	tab->i++;
 	pb(tab);
-	if (s_size * s_comp <= size_list(tab->B))
+	if (s_size * s_comp <= size_list(tab->b))
 		return (s_comp + 1);
 	return (s_comp);
 }
 
 int	sending_bot(t_tabs *tab, int mv, int s_size, int s_comp)
 {
-	void	(*action)(t_tab **add);
-	int		i;
-
-	i = 0;
 	while (mv--)
 	{
 		rra(tab);
@@ -43,31 +35,31 @@ int	sending_bot(t_tabs *tab, int mv, int s_size, int s_comp)
 	}
 	pb(tab);
 	tab->i++;
-	if (s_size * s_comp <= size_list(tab->B))
+	if (s_size * s_comp <= size_list(tab->b))
 		return (s_comp + 1);
 	return (s_comp);
 }
 
-int	send_to_B(t_tabs *tab, int s_size, int s_comp, int size)
+int	send_to_B(t_tabs *tab, int s_size, int s_comp)
 {
-	t_tab	*last_A;
+	t_tab	*last_a;
 	t_tab	*tmp;
 	t_tab	*tmp1;
 	int		mv1;
 	int		mv2;
 
-	while (tab->A)
+	while (tab->a)
 	{
-		last_A = tab->A;
-		while (last_A->next)
-			last_A = last_A->next;
+		last_a = tab->a;
+		while (last_a->next)
+			last_a = last_a->next;
 		mv1 = 0;
-		tmp = tab->A;
+		tmp = tab->a;
 		while (++mv1 && tmp->next && (tmp->i > s_comp * s_size))
 			tmp = tmp->next;
 		--mv1;
 		mv2 = 0;
-		tmp1 = last_A;
+		tmp1 = last_a;
 		while (++mv2 && tmp1->prev && (tmp1->i > s_comp * s_size))
 			tmp1 = tmp1->prev;
 		--mv2;
@@ -75,13 +67,13 @@ int	send_to_B(t_tabs *tab, int s_size, int s_comp, int size)
 			s_comp = sending_top(tab, mv1, s_size, s_comp);
 		else
 			s_comp = sending_bot(tab, mv2 + 1, s_size, s_comp);
-		if (tab->B->next && tab->B->i < tab->B->next->i)
+		if (tab->b->next && tab->b->i < tab->b->next->i)
 			sb(tab);
 	}	
 	return (0);
 }
 
-void	send_to_A(t_tabs *tab, int size)
+void	send_to_a(t_tabs *tab, int size)
 {
 	int		i;
 	int		mv;
@@ -90,11 +82,11 @@ void	send_to_A(t_tabs *tab, int size)
 	t_tab	*tmp;
 
 	i = 0;
-	while (tab->B)
+	while (tab->b)
 	{
-		size_l = size_list(tab->B);
+		size_l = size_list(tab->b);
 		mv = 0;
-		tmp = tab->B;
+		tmp = tab->b;
 		while (tmp->next && tmp->i != size - i && ++mv)
 			tmp = tmp->next;
 		action = rb;
@@ -120,11 +112,11 @@ void	sort_hund(int stack, t_tabs *tab)
 	int	size;
 	int	s_comp;
 
-	size = size_list(tab->A);
+	size = size_list(tab->a);
 	s_size = size / stack;
 	while (s_size * stack < size)
 		s_size++;
 	s_comp = 1;
-	s_comp = send_to_B(tab, s_size, s_comp, size);
-	send_to_A(tab, size);
+	s_comp = send_to_B(tab, s_size, s_comp);
+	send_to_a(tab, size);
 }

@@ -3,17 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: maskedduck <maskedduck@student.42.fr>      +#+  +:+       +#+         #
+#    By: eestela <eestela@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/21 13:18:56 by user42            #+#    #+#              #
-#    Updated: 2021/09/16 15:53:20 by maskedduck       ###   ########.fr        #
+#    Updated: 2021/12/16 17:34:04 by eestela          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = gcc
 INC = push_swap.h
-FLAGS =  -fsanitize=address
+FLAGS = 
+##-fsanitize=address
 
 SRCS =	push_swap.c		\
 		operations1.c	\

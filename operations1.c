@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:20:19 by eestela           #+#    #+#             */
-/*   Updated: 2021/11/29 17:45:51 by eestela          ###   ########.fr       */
+/*   Updated: 2021/12/16 18:42:34 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	sa(t_tabs *tab)
 	t_tab	*second;
 	t_tab	*first;
 
-	first = tab->A;
+	first = tab->a;
 	second = first->next;
 	first->next = second->next;
 	second->next = first;
 	first->prev = second;
 	second->prev = NULL;
-	tab->A = second;
+	tab->a = second;
 	printf("sa\n");
 }
 
@@ -32,13 +32,13 @@ void	sb(t_tabs *tab)
 	t_tab	*second;
 	t_tab	*first;
 
-	first = tab->B;
+	first = tab->b;
 	second = first->next;
 	first->next = second->next;
 	second->next = first;
 	first->prev = second;
 	second->prev = NULL;
-	tab->B = second;
+	tab->b = second;
 	printf("sb\n");
 }
 
@@ -50,38 +50,38 @@ void	ss(t_tabs *tab)
 
 void	pa(t_tabs *tab)
 {
-	t_tab	*A;
-	t_tab	*B;
+	t_tab	*a;
+	t_tab	*b;
 	t_tab	*mem;
 
-	A = tab->A;
-	B = tab->B;
-	mem = B->next;
-	B->next = A;
-	if (A)
-		A->prev = B;
-	tab->A = B;
+	a = tab->a;
+	b = tab->b;
+	mem = b->next;
+	b->next = a;
+	if (a)
+		a->prev = b;
+	tab->a = b;
 	if (mem)
 		mem->prev = NULL;
-	tab->B = mem;
+	tab->b = mem;
 	printf("pa\n");
 }
 
 void	pb(t_tabs *tab)
 {
-	t_tab	*B;
-	t_tab	*A;
+	t_tab	*b;
+	t_tab	*a;
 	t_tab	*mem;
 
-	B = tab->B;
-	A = tab->A;
-	mem = A->next;
-	A->next = B;
-	if (B)
-		B->prev = A;
-	tab->B = A;
+	b = tab->b;
+	a = tab->a;
+	mem = a->next;
+	a->next = b;
+	if (b)
+		b->prev = a;
+	tab->b = a;
 	if (mem)
 		mem->prev = NULL;
-	tab->A = mem;
+	tab->a = mem;
 	printf("pb\n");
 }

@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:20:47 by eestela           #+#    #+#             */
-/*   Updated: 2021/11/29 17:37:27 by eestela          ###   ########.fr       */
+/*   Updated: 2021/12/16 18:43:48 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@ void	sort_two(t_tabs *tab)
 {
 	t_tab	*tmp;
 
-	tmp = tab->A->next;
-	if (tab->A->i > tmp->i)
+	tmp = tab->a->next;
+	if (tab->a->i > tmp->i)
 		sa(tab);
 }
 
-int	place(int A, int B, int C)
+int	place(int a, int b, int C)
 {
 	int	i;
 
 	i = 1;
-	if (A > B)
+	if (a > b)
 		i++;
-	if (A > C)
+	if (a > C)
 		i++;
 	return (i);
 }
@@ -36,25 +36,25 @@ int	place(int A, int B, int C)
 void	sort_three(t_tabs *tab)
 {
 	t_tab	*C;
-	t_tab	*B;
+	t_tab	*b;
 
-	B = tab->A->next;
-	C = B->next;
-	if (place(tab->A->i, B->i, C->i) == 1 && !is_sorted(tab->A))
+	b = tab->a->next;
+	C = b->next;
+	if (place(tab->a->i, b->i, C->i) == 1 && !is_sorted(tab->a))
 	{
 		sa(tab);
 		ra(tab);
 	}
-	if (place(tab->A->i, B->i, C->i) == 2)
+	if (place(tab->a->i, b->i, C->i) == 2)
 	{
-		if (place(B->i, tab->A->i, C->i) == 1)
+		if (place(b->i, tab->a->i, C->i) == 1)
 			sa(tab);
 		else
 			ra(tab);
 	}
-	if (place(tab->A->i, B->i, C->i) == 3)
+	if (place(tab->a->i, b->i, C->i) == 3)
 	{
-		if (place(B->i, tab->A->i, C->i) == 1)
+		if (place(b->i, tab->a->i, C->i) == 1)
 			ra(tab);
 		else
 		{
@@ -66,11 +66,11 @@ void	sort_three(t_tabs *tab)
 
 void	sort_five(t_tabs *tab)
 {
-	while (size_list(tab->A) > 3)
+	while (size_list(tab->a) > 3)
 		pb(tab);
 	sort_three(tab);
-	while (size_list(tab->B))
+	while (size_list(tab->b))
 		insert(tab);
-	while (tab->A->i != 1)
+	while (tab->a->i != 1)
 		ra(tab);
 }

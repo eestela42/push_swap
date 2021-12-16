@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:20:58 by eestela           #+#    #+#             */
-/*   Updated: 2021/11/29 18:14:54 by eestela          ###   ########.fr       */
+/*   Updated: 2021/12/16 18:42:26 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	ft_atoi(const char *str)
 {
-	int nbr;
-	int i;
-	int sign;
+	int	nbr;
+	int	i;
+	int	sign;
 
 	i = 0;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' ||
-		str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
+		|| str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
 		i++;
 	sign = 1;
 	if (str[i] == '-')
@@ -39,7 +39,7 @@ int	ft_atoi(const char *str)
 	return (nbr);
 }
 
-int			check_is_num(char *str)
+int	check_is_num(char *str)
 {
 	int	i;
 
@@ -48,8 +48,10 @@ int			check_is_num(char *str)
 	{
 		i++;
 	}
-	if ((!ft_atoi(str) && ((str[0] != '0' && !str[1]))) ||
-	(str[0] != '-' && str[1] != '0' && !str[2]) || i > 10)
+	if (ft_atoi(str))
+		;
+	else if ((!ft_atoi(str) && ((str[0] != '0' && !str[1])))
+		|| (str[0] != '-' && str[1] != '0' && !str[2]) || i > 10)
 		return (0);
 	return (1);
 }
@@ -63,11 +65,11 @@ int	ft_order(t_tabs *tab, int size)
 	t_tab	*tmpo;
 
 	i = 0;
-	tmp = tab->A;
+	tmp = tab->a;
 	while (i < size)
 	{
 		place = 1;
-		tmpo = tab->A;
+		tmpo = tab->a;
 		while (tmpo)
 		{
 			if (tmp->i == tmpo->i && tmp != tmpo)
@@ -80,7 +82,7 @@ int	ft_order(t_tabs *tab, int size)
 		tmp = tmp->next;
 	}
 	i = 0;
-	tmp = tab->A;
+	tmp = tab->a;
 	while (tmp)
 	{
 		tmp->i = order[i++];
@@ -95,17 +97,17 @@ t_tabs	*ft_init(t_tabs *tab, int ac, char *av[])
 	t_tab	*tmp;
 	t_tab	*mem;
 
-	tab->A = malloc(sizeof(t_tab));
-	tab->A->next = NULL;
-	if (tab->A && check_is_num(av[1]))
-		tab->A->i = ft_atoi(av[1]);
+	tab->a = malloc(sizeof(t_tab));
+	tab->a->next = NULL;
+	if (tab->a && check_is_num(av[1]))
+		tab->a->i = ft_atoi(av[1]);
 	else
 	{
 		ft_free_tab(&tab);
 		return (NULL);
 	}
 	i = 2;
-	mem = tab->A;
+	mem = tab->a;
 	while (i < ac && check_is_num(av[i]))
 	{
 		tmp = malloc(sizeof(t_tab));
@@ -121,8 +123,8 @@ t_tabs	*ft_init(t_tabs *tab, int ac, char *av[])
 		tmp = NULL;
 	}
 	mem->next = NULL;
-	tab->B = NULL;
-	if ((tab && !ft_order(tab, size_list(tab->A))) || i < ac)
+	tab->b = NULL;
+	if ((tab && !ft_order(tab, size_list(tab->a))) || i < ac)
 		ft_free_tab(&tab);
 	return (tab);
 }

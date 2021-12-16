@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:20:29 by eestela           #+#    #+#             */
-/*   Updated: 2021/11/29 17:45:22 by eestela          ###   ########.fr       */
+/*   Updated: 2021/12/16 18:42:45 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ void	ra(t_tabs *tab)
 	t_tab	*last;
 	t_tab	*mem;
 
-	first = tab->A;
-	last = tab->A;
+	first = tab->a;
+	last = tab->a;
 	mem = first->next;
 	while (last->next)
 		last = last->next;
 	last->next = first;
 	first->prev = last;
 	first->next = NULL;
-	tab->A = mem;
+	tab->a = mem;
 	printf("ra\n");
 }
 
@@ -36,15 +36,15 @@ void	rb(t_tabs *tab)
 	t_tab	*last;
 	t_tab	*mem;
 
-	first = tab->B;
-	last = tab->B;
+	first = tab->b;
+	last = tab->b;
 	mem = first->next;
 	while (last->next)
 		last = last->next;
 	last->next = first;
 	first->prev = last;
 	first->next = NULL;
-	tab->B = mem;
+	tab->b = mem;
 	printf("rb\n");
 }
 
@@ -60,8 +60,8 @@ void	rra(t_tabs *tab)
 	t_tab	*last;
 	t_tab	*bef;
 
-	first = tab->A;
-	last = tab->A;
+	first = tab->a;
+	last = tab->a;
 	if (!last || !last->next)
 		return ;
 	while (last->next)
@@ -73,7 +73,7 @@ void	rra(t_tabs *tab)
 	first->prev = last;
 	last->prev = NULL;
 	bef->next = NULL;
-	tab->A = last;
+	tab->a = last;
 	printf("rra\n");
 }
 
@@ -83,8 +83,8 @@ void	rrb(t_tabs *tab)
 	t_tab	*last;
 	t_tab	*bef;
 
-	first = tab->B;
-	last = tab->B;
+	first = tab->b;
+	last = tab->b;
 	while (last->next)
 	{
 		bef = last;
@@ -94,6 +94,6 @@ void	rrb(t_tabs *tab)
 	first->prev = last;
 	last->prev = NULL;
 	bef->next = NULL;
-	tab->B = last;
+	tab->b = last;
 	printf("rrb\n");
 }

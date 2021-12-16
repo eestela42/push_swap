@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:40:25 by eestela           #+#    #+#             */
-/*   Updated: 2021/11/29 17:41:02 by eestela          ###   ########.fr       */
+/*   Updated: 2021/12/16 18:45:09 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ typedef struct s_tab
 
 typedef struct s_tabs
 {
-	t_tab				*A;
-	t_tab				*B;
+	t_tab				*a;
+	t_tab				*b;
 	int					i;
 }				t_tabs;
 
@@ -46,10 +46,10 @@ void		rrr(t_tabs *tab);
 
 void		afficher(t_tabs *tab);
 
-int			size_list(t_tab *A);
-int			is_sorted(t_tab *A);
+int			size_list(t_tab *a);
+int			is_sorted(t_tab *a);
 void		insert(t_tabs *tab);
-int			check_lst(t_tab	*A, int size);
+int			check_lst(t_tab	*a, int size);
 int			ft_free_tab(t_tabs **tab);
 //void		init(t_tabs *tab, int ac, char *av[]);
 t_tabs		*ft_init(t_tabs *tab, int ac, char *av[]);
