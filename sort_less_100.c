@@ -6,39 +6,11 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:20:50 by eestela           #+#    #+#             */
-/*   Updated: 2022/01/10 18:36:28 by eestela          ###   ########.fr       */
+/*   Updated: 2022/01/10 19:36:46 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	sending_top(t_tabs *tab, int mv, int s_size, int s_comp)
-{
-	while (mv--)
-	{
-		tab->i++;
-		ra(tab);
-	}
-	tab->i++;
-	pb(tab);
-	if (s_size * s_comp <= size_list(tab->b))
-		return (s_comp + 1);
-	return (s_comp);
-}
-
-int	sending_bot(t_tabs *tab, int mv, int s_size, int s_comp)
-{
-	while (mv--)
-	{
-		rra(tab);
-		tab->i++;
-	}
-	pb(tab);
-	tab->i++;
-	if (s_size * s_comp <= size_list(tab->b))
-		return (s_comp + 1);
-	return (s_comp);
-}
 
 int	send_to_b(t_tabs *tab, int s_size, int s_comp)
 {
@@ -46,7 +18,7 @@ int	send_to_b(t_tabs *tab, int s_size, int s_comp)
 	t_tab	*tmp;
 	t_tab	*tmp1;
 	int		mv1;
-	int		mv2;
+	int 	mv2;
 
 	while (tab->a)
 	{

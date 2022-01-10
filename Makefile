@@ -6,7 +6,7 @@
 #    By: eestela <eestela@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/21 13:18:56 by user42            #+#    #+#              #
-#    Updated: 2021/12/16 17:34:04 by eestela          ###   ########.fr        #
+#    Updated: 2022/01/10 19:27:15 by eestela          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS =	push_swap.c		\
 		init.c			\
 		sort_less_5.c	\
 		sort_less_100.c	\
+		utils_100.c		
 	
 OBJS = $(SRCS:.c=.o)
 

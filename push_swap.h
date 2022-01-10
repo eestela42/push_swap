@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:40:25 by eestela           #+#    #+#             */
-/*   Updated: 2021/12/16 18:45:09 by eestela          ###   ########.fr       */
+/*   Updated: 2022/01/10 19:29:38 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,8 @@ void		sort_two(t_tabs *tab);
 void		sort_three(t_tabs *tab);
 void		sort_five(t_tabs *tab);
 void		sort_hund(int stack, t_tabs *tab);
+
+int			sending_top(t_tabs *tab, int mv, int s_size, int s_comp);
+int			sending_bot(t_tabs *tab, int mv, int s_size, int s_comp);
 
 #endif
