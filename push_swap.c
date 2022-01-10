@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:20:35 by eestela           #+#    #+#             */
-/*   Updated: 2021/12/16 18:41:52 by eestela          ###   ########.fr       */
+/*   Updated: 2022/01/10 18:32:30 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	main(int ac, char *av[])
 		sort_hund(10, tab);
 	else if (size > 1)
 		sort_hund(13, tab);
-	printf("%i MOOVES\n", tab->i);
 	if (tab)
 		ft_free_tab(&tab);
 	return (1);
