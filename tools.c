@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:20:52 by eestela           #+#    #+#             */
-/*   Updated: 2021/12/16 18:44:03 by eestela          ###   ########.fr       */
+/*   Updated: 2022/01/10 19:53:24 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,6 @@ int	ft_free_tab(t_tabs **add_tab)
 	tab = NULL;
 	*add_tab = tab;
 	return (0);
-}
-
-int	size_list(t_tab *a)
-{
-	int		i;
-
-	i = 0;
-	while (a)
-	{
-		i++;
-		a = a->next;
-	}
-	return (i);
 }
 
 int	is_sorted(t_tab *a)

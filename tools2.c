@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_100.c                                        :+:      :+:    :+:   */
+/*   tools2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 19:26:43 by eestela           #+#    #+#             */
-/*   Updated: 2022/01/10 19:26:53 by eestela          ###   ########.fr       */
+/*   Updated: 2022/01/10 19:53:29 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,17 @@ int	sending_bot(t_tabs *tab, int mv, int s_size, int s_comp)
 	if (s_size * s_comp <= size_list(tab->b))
 		return (s_comp + 1);
 	return (s_comp);
+}
+
+int	size_list(t_tab *a)
+{
+	int		i;
+
+	i = 0;
+	while (a)
+	{
+		i++;
+		a = a->next;
+	}
+	return (i);
 }
