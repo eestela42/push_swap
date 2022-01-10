@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:20:50 by eestela           #+#    #+#             */
-/*   Updated: 2021/12/16 18:43:52 by eestela          ###   ########.fr       */
+/*   Updated: 2022/01/10 18:36:28 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	sending_bot(t_tabs *tab, int mv, int s_size, int s_comp)
 	return (s_comp);
 }
 
-int	send_to_B(t_tabs *tab, int s_size, int s_comp)
+int	send_to_b(t_tabs *tab, int s_size, int s_comp)
 {
 	t_tab	*last_a;
 	t_tab	*tmp;
@@ -117,6 +117,6 @@ void	sort_hund(int stack, t_tabs *tab)
 	while (s_size * stack < size)
 		s_size++;
 	s_comp = 1;
-	s_comp = send_to_B(tab, s_size, s_comp);
+	s_comp = send_to_b(tab, s_size, s_comp);
 	send_to_a(tab, size);
 }
