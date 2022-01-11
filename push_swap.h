@@ -42,6 +42,15 @@ typedef struct s_send
 	int		mv2;
 }				t_send;
 
+typedef struct s_senda
+{
+	int		i;
+	int		mv;
+	int		size_l;
+	void	(*action)(t_tabs *tab);
+	t_tab	*tmp;
+}				t_senda;
+
 void		sa(t_tabs *tab);
 void		sb(t_tabs *tab);
 void		ss(t_tabs *tab);

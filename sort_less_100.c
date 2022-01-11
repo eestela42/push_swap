@@ -41,36 +41,30 @@ int	send_to_b(t_tabs *tab, int s_size, int s_comp)
 	return (0);
 }
 
-void	send_to_a(t_tabs *tab, int size)
+void	send_to_a(t_tabs *tab, int size, t_senda senda)
 {
-	int		i;
-	int		mv;
-	int		size_l;
-	void	(*action)(t_tabs *tab);
-	t_tab	*tmp;
-
-	i = 0;
+	senda.i = 0;
 	while (tab->b)
 	{
-		size_l = size_list(tab->b);
-		mv = 0;
-		tmp = tab->b;
-		while (tmp->next && tmp->i != size - i && ++mv)
-			tmp = tmp->next;
-		action = rb;
-		if (mv > size_l / 2)
+		senda.size_l = size_list(tab->b);
+		senda.mv = 0;
+		senda.tmp = tab->b;
+		while (senda.tmp->next && senda.tmp->i != size - senda.i && ++senda.mv)
+			senda.tmp = senda.tmp->next;
+		senda.action = rb;
+		if (senda.mv > senda.size_l / 2)
 		{
-			action = rrb;
-			mv = (size_l - mv);
+			senda.action = rrb;
+			senda.mv = (senda.size_l - senda.mv);
 		}
-		while (mv--)
+		while (senda.mv--)
 		{
 			tab->i++;
-			action(tab);
+			senda.action(tab);
 		}
 		tab->i++;
 		pa(tab);
-		i++;
+		senda.i++;
 	}
 }
 
@@ -79,6 +73,7 @@ void	sort_hund(int stack, t_tabs *tab)
 	int	s_size;
 	int	size;
 	int	s_comp;
+	t_senda	senda;
 
 	size = size_list(tab->a);
 	s_size = size / stack;
@@ -86,5 +81,5 @@ void	sort_hund(int stack, t_tabs *tab)
 		s_size++;
 	s_comp = 1;
 	s_comp = send_to_b(tab, s_size, s_comp);
-	send_to_a(tab, size);
+	send_to_a(tab, size, senda);
 }

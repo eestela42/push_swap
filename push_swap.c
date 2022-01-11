@@ -41,7 +41,6 @@ int	main(int ac, char *av[])
 	}
 	tab->i = 0;
 	launcher(tab, size_list(tab->a));
-	printf("mv = %i\n", tab->i);
 	if (tab)
 		ft_free_tab(&tab);
 	return (1);
