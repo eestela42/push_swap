@@ -33,6 +33,15 @@ typedef struct s_tabs
 	int					i;
 }				t_tabs;
 
+typedef struct s_send
+{
+	t_tab	*last_a;
+	t_tab	*tmp;
+	t_tab	*tmp1;
+	int		mv1;
+	int		mv2;
+}				t_send;
+
 void		sa(t_tabs *tab);
 void		sb(t_tabs *tab);
 void		ss(t_tabs *tab);
@@ -61,5 +70,8 @@ void		sort_hund(int stack, t_tabs *tab);
 
 int			sending_top(t_tabs *tab, int mv, int s_size, int s_comp);
 int			sending_bot(t_tabs *tab, int mv, int s_size, int s_comp);
+
+int			place(int a, int b, int C);
+void		fct1(t_tab *b, t_tab *c, t_tabs *tab);
 
 #endif

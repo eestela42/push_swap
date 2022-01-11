@@ -12,34 +12,29 @@
 
 #include "push_swap.h"
 
-
-
-int	send_to_b(t_tabs *tab, int s_size, int s_comp, int mv2)
+int	send_to_b(t_tabs *tab, int s_size, int s_comp)
 {
-	t_tab	*last_a;
-	t_tab	*tmp;
-	t_tab	*tmp1;
-	int		mv1;
+	t_send	send;
 
 	while (tab->a)
 	{
-		last_a = tab->a;
-		while (last_a->next)
-			last_a = last_a->next;
-		mv1 = 0;
-		tmp = tab->a;
-		while (++mv1 && tmp->next && (tmp->i > s_comp * s_size))
-			tmp = tmp->next;
-		--mv1;
-		mv2 = 0;
-		tmp1 = last_a;
-		while (++mv2 && tmp1->prev && (tmp1->i > s_comp * s_size))
-			tmp1 = tmp1->prev;
-		--mv2;
-		if (mv1 < mv2 + 1 || (mv1 == mv2 + 1 && tmp->i < tmp1->i))
-			s_comp = sending_top(tab, mv1, s_size, s_comp);
+		send.last_a = tab->a;
+		while (send.last_a->next)
+			send.last_a = send.last_a->next;
+		send.mv1 = 0;
+		send.tmp = tab->a;
+		while (++send.mv1 && send.tmp->next && (send.tmp->i > s_comp * s_size))
+			send.tmp = send.tmp->next;
+		--send.mv1;
+		send.mv2 = 0;
+		send.tmp1 = send.last_a;
+		while (++send.mv2 && send.tmp1->prev && (send.tmp1->i > s_comp * s_size))
+			send.tmp1 = send.tmp1->prev;
+		--send.mv2;
+		if (send.mv1 < send.mv2 + 1 || (send.mv1 == send.mv2 + 1 && send.tmp->i < send.tmp1->i))
+			s_comp = sending_top(tab, send.mv1, s_size, s_comp);
 		else
-			s_comp = sending_bot(tab, mv2 + 1, s_size, s_comp);
+			s_comp = sending_bot(tab, send.mv2 + 1, s_size, s_comp);
 		if (tab->b->next && tab->b->i < tab->b->next->i)
 			sb(tab);
 	}	
@@ -90,6 +85,6 @@ void	sort_hund(int stack, t_tabs *tab)
 	while (s_size * stack < size)
 		s_size++;
 	s_comp = 1;
-	s_comp = send_to_b(tab, s_size, s_comp, 0);
+	s_comp = send_to_b(tab, s_size, s_comp);
 	send_to_a(tab, size);
 }

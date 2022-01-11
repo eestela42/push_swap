@@ -17,3 +17,10 @@ void	rrr(t_tabs *tab)
 	rra(tab);
 	rra(tab);
 }
+void	fct1(t_tab *b, t_tab *c, t_tabs *tab)
+{
+	if (place(b->i, tab->a->i, c->i) == 1)
+		sa(tab);
+	else
+		ra(tab);
+}

@@ -52,3 +52,15 @@ int	size_list(t_tab *a)
 	}
 	return (i);
 }
+
+int	place(int a, int b, int C)
+{
+	int	i;
+
+	i = 1;
+	if (a > b)
+		i++;
+	if (a > C)
+		i++;
+	return (i);
+}

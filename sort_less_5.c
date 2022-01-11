@@ -21,18 +21,6 @@ void	sort_two(t_tabs *tab)
 		sa(tab);
 }
 
-int	place(int a, int b, int C)
-{
-	int	i;
-
-	i = 1;
-	if (a > b)
-		i++;
-	if (a > C)
-		i++;
-	return (i);
-}
-
 void	sort_three(t_tabs *tab)
 {
 	t_tab	*c;
@@ -46,12 +34,7 @@ void	sort_three(t_tabs *tab)
 		ra(tab);
 	}
 	if (place(tab->a->i, b->i, c->i) == 2)
-	{
-		if (place(b->i, tab->a->i, c->i) == 1)
-			sa(tab);
-		else
-			ra(tab);
-	}
+		fct1(b, c, tab);
 	if (place(tab->a->i, b->i, c->i) == 3)
 	{
 		if (place(b->i, tab->a->i, c->i) == 1)
