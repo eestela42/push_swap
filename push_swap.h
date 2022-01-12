@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:40:25 by eestela           #+#    #+#             */
-/*   Updated: 2022/01/10 19:29:38 by eestela          ###   ########.fr       */
+/*   Updated: 2022/01/12 20:46:08 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,22 @@ typedef struct s_senda
 	t_tab	*tmp;
 }				t_senda;
 
+typedef struct s_norm
+{
+	int		i;
+	t_tab	*tmp;
+	t_tab	*mem;
+}				t_norm;
+
+typedef struct s_norm1
+{
+	int		*order;
+	int		i;
+	int		place;
+	t_tab	*tmp;
+	t_tab	*tmpo;
+}				t_norm1;
+
 void		sa(t_tabs *tab);
 void		sb(t_tabs *tab);
 void		ss(t_tabs *tab);
@@ -82,5 +98,6 @@ int			sending_bot(t_tabs *tab, int mv, int s_size, int s_comp);
 
 int			place(int a, int b, int C);
 void		fct1(t_tab *b, t_tab *c, t_tabs *tab);
+t_norm1		ft_order_norm(t_tabs *tab, int size, t_norm1 norm);
 
 #endif

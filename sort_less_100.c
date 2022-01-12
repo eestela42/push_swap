@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:20:50 by eestela           #+#    #+#             */
-/*   Updated: 2022/01/10 19:39:38 by eestela          ###   ########.fr       */
+/*   Updated: 2022/01/12 20:30:14 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 int	send_to_b(t_tabs *tab, int s_size, int s_comp)
 {
-	t_send	send;
+	t_send	b;
 
 	while (tab->a)
 	{
-		send.last_a = tab->a;
-		while (send.last_a->next)
-			send.last_a = send.last_a->next;
-		send.mv1 = 0;
-		send.tmp = tab->a;
-		while (++send.mv1 && send.tmp->next && (send.tmp->i > s_comp * s_size))
-			send.tmp = send.tmp->next;
-		--send.mv1;
-		send.mv2 = 0;
-		send.tmp1 = send.last_a;
-		while (++send.mv2 && send.tmp1->prev && (send.tmp1->i > s_comp * s_size))
-			send.tmp1 = send.tmp1->prev;
-		--send.mv2;
-		if (send.mv1 < send.mv2 + 1 || (send.mv1 == send.mv2 + 1 && send.tmp->i < send.tmp1->i))
-			s_comp = sending_top(tab, send.mv1, s_size, s_comp);
+		b.last_a = tab->a;
+		while (b.last_a->next)
+			b.last_a = b.last_a->next;
+		b.mv1 = 0;
+		b.tmp = tab->a;
+		while (++b.mv1 && b.tmp->next && (b.tmp->i > s_comp * s_size))
+			b.tmp = b.tmp->next;
+		--b.mv1;
+		b.mv2 = 0;
+		b.tmp1 = b.last_a;
+		while (++b.mv2 && b.tmp1->prev && (b.tmp1->i > s_comp * s_size))
+			b.tmp1 = b.tmp1->prev;
+		--b.mv2;
+		if (b.mv1 < b.mv2 + 1 || (b.mv1 == b.mv2 + 1 && b.tmp->i < b.tmp1->i))
+			s_comp = sending_top(tab, b.mv1, s_size, s_comp);
 		else
-			s_comp = sending_bot(tab, send.mv2 + 1, s_size, s_comp);
+			s_comp = sending_bot(tab, b.mv2 + 1, s_size, s_comp);
 		if (tab->b->next && tab->b->i < tab->b->next->i)
 			sb(tab);
 	}	
@@ -70,9 +70,9 @@ void	send_to_a(t_tabs *tab, int size, t_senda senda)
 
 void	sort_hund(int stack, t_tabs *tab)
 {
-	int	s_size;
-	int	size;
-	int	s_comp;
+	int		s_size;
+	int		size;
+	int		s_comp;
 	t_senda	senda;
 
 	size = size_list(tab->a);

@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:20:58 by eestela           #+#    #+#             */
-/*   Updated: 2021/12/16 18:42:26 by eestela          ###   ########.fr       */
+/*   Updated: 2022/01/12 20:46:41 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,44 +58,53 @@ int	check_is_num(char *str)
 
 int	ft_order(t_tabs *tab, int size)
 {
-	int		order[size];
-	int		i;
-	int		place;
-	t_tab	*tmp;
-	t_tab	*tmpo;
+	t_norm1	norm;
 
-	i = 0;
-	tmp = tab->a;
-	while (i < size)
+	norm.i = 0;
+	norm.tmp = tab->a;
+	norm.order = malloc(sizeof(int) * size + 1);
+	if (!norm.order)
+		return (0);
+	norm = ft_order_norm(tab, size, norm);
+	if (norm.i == -1)
 	{
-		place = 1;
-		tmpo = tab->a;
-		while (tmpo)
-		{
-			if (tmp->i == tmpo->i && tmp != tmpo)
-				return (0);
-			else if (tmp->i > tmpo->i)
-				place++;
-			tmpo = tmpo->next;
-		}
-		order[i++] = place;
-		tmp = tmp->next;
+		free(norm.order);
+		return (0);
 	}
-	i = 0;
-	tmp = tab->a;
-	while (tmp)
+	norm.i = 0;
+	norm.tmp = tab->a;
+	while (norm.tmp)
 	{
-		tmp->i = order[i++];
-		tmp = tmp->next;
+		norm.tmp->i = norm.order[norm.i++];
+		norm.tmp = norm.tmp->next;
 	}
+	free(norm.order);
 	return (1);
+}
+
+int	norm_init(t_norm norm, t_tabs *tab, int ac, char *av[])
+{
+	while (norm.i < ac && check_is_num(av[norm.i]))
+	{
+		norm.tmp = malloc(sizeof(t_tab));
+		if (!norm.tmp)
+		{
+			ft_free_tab(&tab);
+			return (-1);
+		}
+		norm.mem->next = norm.tmp;
+		norm.tmp->prev = norm.mem;
+		norm.tmp->i = ft_atoi(av[norm.i++]);
+		norm.mem = norm.tmp;
+		norm.tmp = NULL;
+	}
+	norm.mem->next = NULL;
+	return (norm.i);
 }
 
 t_tabs	*ft_init(t_tabs *tab, int ac, char *av[])
 {
-	int		i;
-	t_tab	*tmp;
-	t_tab	*mem;
+	t_norm	norm;
 
 	tab->a = malloc(sizeof(t_tab));
 	tab->a->next = NULL;
@@ -106,25 +115,13 @@ t_tabs	*ft_init(t_tabs *tab, int ac, char *av[])
 		ft_free_tab(&tab);
 		return (NULL);
 	}
-	i = 2;
-	mem = tab->a;
-	while (i < ac && check_is_num(av[i]))
-	{
-		tmp = malloc(sizeof(t_tab));
-		if (!tmp)
-		{
-			ft_free_tab(&tab);
-			return (NULL);
-		}
-		mem->next = tmp;
-		tmp->prev = mem;
-		tmp->i = ft_atoi(av[i++]);
-		mem = tmp;
-		tmp = NULL;
-	}
-	mem->next = NULL;
+	norm.i = 2;
+	norm.mem = tab->a;
+	norm.i = norm_init(norm, tab, ac, av);
+	if (norm.i == -1)
+		return (NULL);
 	tab->b = NULL;
-	if ((tab && !ft_order(tab, size_list(tab->a))) || i < ac)
+	if ((tab && !ft_order(tab, size_list(tab->a))) || norm.i < ac)
 		ft_free_tab(&tab);
 	return (tab);
 }

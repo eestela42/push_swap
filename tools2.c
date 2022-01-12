@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 19:26:43 by eestela           #+#    #+#             */
-/*   Updated: 2022/01/10 19:53:29 by eestela          ###   ########.fr       */
+/*   Updated: 2022/01/12 20:46:32 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,27 @@ int	place(int a, int b, int C)
 	if (a > C)
 		i++;
 	return (i);
+}
+
+t_norm1	ft_order_norm(t_tabs *tab, int size, t_norm1 norm)
+{
+	while (norm.i < size)
+	{
+		norm.place = 1;
+		norm.tmpo = tab->a;
+		while (norm.tmpo)
+		{
+			if (norm.tmp->i == norm.tmpo->i && norm.tmp != norm.tmpo)
+			{
+				norm.i = -1;
+				return (norm);
+			}
+			else if (norm.tmp->i > norm.tmpo->i)
+				norm.place++;
+			norm.tmpo = norm.tmpo->next;
+		}
+		norm.order[norm.i++] = norm.place;
+		norm.tmp = norm.tmp->next;
+	}
+	return (norm);
 }
