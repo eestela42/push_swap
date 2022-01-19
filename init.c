@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:20:58 by eestela           #+#    #+#             */
-/*   Updated: 2022/01/12 20:46:41 by eestela          ###   ########.fr       */
+/*   Updated: 2022/01/13 19:55:37 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,15 @@ int	check_is_num(char *str)
 	i = 0;
 	while (str[i])
 	{
+		if ((str[i] >= '0' && str[i] <= '9') || str[i] == '-')
+			;
+		else
+			return (0);
 		i++;
 	}
 	if (ft_atoi(str))
-		;
-	else if ((!ft_atoi(str) && ((str[0] != '0' && !str[1])))
+		return (1);
+	else if (((str[0] != '0' && !str[1]))
 		|| (str[0] != '-' && str[1] != '0' && !str[2]) || i > 10)
 		return (0);
 	return (1);
