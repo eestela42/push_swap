@@ -13,8 +13,7 @@
 NAME = push_swap
 CC = gcc
 INC = push_swap.h
-FLAGS = 
-##-fsanitize=address
+FLAGS = -Wall -Werror -Wextra -fsanitize=address
 
 SRCS =	push_swap.c		\
 		operations1.c	\
